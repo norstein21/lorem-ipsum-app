@@ -3,12 +3,21 @@ import data from './data';
 function App() {
   
   const [hitung,setHitung] = useState(0);
-  const [teks,setTeks] = useState(0);
+  const [teks,setTeks] = useState([]);
   
   const handleSubmit = (e) =>{
     e.preventDefault();
     console.log('hello world')
-    setTeks(data);
+
+    let amount = parseInt(hitung);
+    if ( amount <= 0 ){
+      return amount = 1
+    }
+
+    if (amount > 8){
+      return amount = 8
+    }
+    setTeks(data.slice(0,amount));
   }
 
   return (
@@ -26,8 +35,13 @@ function App() {
           Generate
         </button>
       </form>
-      <article>
-        <p>Cat gets stuck in tree firefighters try to get cat down firefighters get stuck in tree cat eats firefighters' slippers kitty power ignore the squirrels, you'll never catch them anyway for what a cat-ass-trophy! or purr as loud as possible, be the most annoying cat that you can, and, knock everything off the table. Pretend you want to go out but then don't bite off human's toes, yet disappear for four days and return home with an expensive injury; bite the vet so catch eat throw up catch eat throw up bad birds. </p>
+      <article className='lorem-text'>
+        {teks.map((item,index)=>{
+          console.log(item)
+          return (
+            <p key={index}>{item}</p>
+          );
+        })}
       </article>
       
   </section>
